@@ -1,0 +1,99 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 15px;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+}
+
+.favoriteButton {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.3s;
+}
+
+.favoriteButton:hover {
+  opacity: 0.8;
+}
+
+.icon {
+  margin-right: 5px;
+  color: red;
+}
+
+.favoriteCount {
+  font-weight: bold;
+}
+
+.titleSection {
+  cursor: pointer;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.favoriteButton {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.favoriteCount {
+  margin-left: 8px;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.favoritesList {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #333;
+  z-index: 10;
+}
+
+.favoritesList h3 {
+  margin-bottom: 10px;
+}
+
+.favoritesList ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.favoritesList li {
+  margin-bottom: 5px;
+}
+
+.removeButton {
+  background: none;
+  border: none;
+  color: red;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-left: 10px;
+}
