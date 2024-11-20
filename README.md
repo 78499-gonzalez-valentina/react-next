@@ -16,3 +16,9 @@ Incluye un botón para volver al listado desde el detalle.
 3.Ejecuta el proyecto en modo desarrollo: npm run dev
 4.Abre la aplicación en el navegador: http://localhost:3000 para ver la aplicación en funcionamiento.
 
+# Despliegue
+La aplicación está desplegada en un hosting público y puedes acceder a ella mediante el siguiente enlace:
+
+https://tech-spot.vercel.app/
+
+
