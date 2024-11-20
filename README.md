@@ -11,7 +11,7 @@ Muestra el detalle de un artículo al hacer clic en su título.
 Incluye un botón para volver al listado desde el detalle.
 
 # Instalación y Ejecución
-1.Clona el repositorio: git clone https://github.com/tu_usuario/react-jr.git
+1.Clona el repositorio: git clone https://github.com/78499-gonzalez-valentina/react-next.git
 2.Instala las dependencias: npm install
 3.Ejecuta el proyecto en modo desarrollo: npm run dev
 4.Abre la aplicación en el navegador: http://localhost:3000 para ver la aplicación en funcionamiento.
