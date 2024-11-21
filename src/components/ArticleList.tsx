@@ -118,13 +118,13 @@ const ArticleList: React.FC<ArticleListProps> = ({ articles, onArticleSelect, to
 />
               </div>
               <div className={styles.nameArticle}>
-                <h3 onClick={() => onArticleSelect(article)}>{article.titulo}</h3>
-    
+                            <h3 onClick={() => onArticleSelect(article)}>{article.titulo}</h3>
+                
 
-      <p className={styles.ratingOneStar}>
-        <FontAwesomeIcon icon={faStar} style={{ color: '#FFB84D' }} />
-        {` ${article.rating.toFixed(1)}`}
-      </p>
+                  <p className={styles.ratingOneStar}>
+                    <FontAwesomeIcon icon={faStar} style={{ color: '#FFB84D' }} />
+                    {` ${article.rating.toFixed(1)}`}
+                  </p>
               </div>
               <div className={styles.description}>
                 <p>{article.descripcion}</p>

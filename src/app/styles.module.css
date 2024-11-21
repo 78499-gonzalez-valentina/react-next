@@ -8,9 +8,7 @@
     justify-content: center;
     border-bottom: 3px solid #3d3d3d;
   }
-.favoriteButton{
-  display: none;
-}
+
   .searchContainer {
     display: flex;
     flex-direction: column;
@@ -92,6 +90,7 @@
       transform: translateX(-50%);
       opacity: 0;
       transition: opacity 0.3s;
+      
     }
   
     .tooltipContainer:hover .tooltipText {
@@ -182,7 +181,6 @@
     margin-top: 10px;
     font-size: 18px;
     font-weight: 600;
-    display: none;
   }
 
   .ratingDetail{
@@ -439,7 +437,6 @@
       margin-top: 15px;
     cursor: pointer;
     transition: transform 0.2s;
-    display: none;
   }
 
   .favoriteButton:hover {
@@ -551,7 +548,7 @@
     margin-top: 10px;
     font-size: 18px;
     font-weight: 600;
-    display: none;
+  
   }
 
   .ratingDetail{
