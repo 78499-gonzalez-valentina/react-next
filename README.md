@@ -9,6 +9,7 @@ Ofrece la funcionalidad de filtrar artículos por título.
 Ofrece la funcionalidad de ordenar por relevancia o precio.
 Muestra el detalle de un artículo al hacer clic en su título.
 Incluye un botón para volver al listado desde el detalle.
+Permite agregar artículos al carrito y modificar su cantidad.
 
 # Instalación y Ejecución
 1.Clona el repositorio: git clone https://github.com/78499-gonzalez-valentina/react-next.git
