@@ -152,7 +152,7 @@
 .carritoList {
   position: absolute;
   top: 80px;
-  min-width: 400px;
+  width: 380px;
   min-height: 500px;
   max-height: 1000px;
   right: 20px;
