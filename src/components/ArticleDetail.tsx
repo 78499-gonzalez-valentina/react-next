@@ -6,6 +6,7 @@ import styles from "../app/styles.module.css";
 import { faHeart as solidHeart, faStar } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 interface ArticleDetailsProps {
   article: Article;
@@ -29,7 +30,7 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = ({ article, onBack, toggle
 
   return (
     <div>
-      <button className={styles.btnVolver} onClick={onBack}>Volver al Listado</button>
+      <button className={styles.btnVolver} onClick={onBack}><FontAwesomeIcon icon={faArrowLeft} /> Volver al Listado</button>
       <div className={styles.detailArticle}>
         <div key={article.id} className={styles.articleDetaill}>
            <Image
@@ -60,12 +61,12 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = ({ article, onBack, toggle
           <p>
             {Array.from({ length: Math.round(article.rating) }, (_, index) => (
               <FontAwesomeIcon key={index} icon={faStar} style={{ color: '#FFB84D' }} /> 
-            ))} {article.rating}
+            ))} {article.rating.toFixed(1)}
           </p>   
           <p> Calificación {article.rating} de {article.opiniones} opiniones </p>
           <p className={styles.price}>Precio: ${article.precio}</p>
           <p>Categoría: {article.categoria}</p>
-          <p>Medios de pago {article.pago}</p>
+          <p>Medios de pago: {article.pago}</p>
           <p>Tenés {article.garantía} meses de garantía desde que lo recibís.</p>
           <button className={styles.btnComprar} onClick={mensaje}>Comprar ahora</button>
           <button className={styles.btnCarrito} onClick={() => toggleCarrito(article.id)}>{isCarrito ? agregado: agregar}</button>

@@ -6,6 +6,8 @@ import styles from "../app/styles.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faHeart as solidHeart, faStar, faShoppingCart} from '@fortawesome/free-solid-svg-icons';
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
+import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
+
 
 
 
@@ -18,7 +20,7 @@ interface ArticleListProps {
   carrito: Article[];
 }
 
-const ArticleList: React.FC<ArticleListProps> = ({ articles, onArticleSelect, toggleFavorite, favorites, toggleCarrito}) => {
+const ArticleList: React.FC<ArticleListProps> = ({ articles, onArticleSelect, toggleFavorite, favorites, toggleCarrito, carrito}) => {
 
   const [search, setSearch] = useState<string>('');
   const [sortBy, setSortBy] = useState<'relevancia' | 'precioAsc' | 'precioDesc'>('relevancia');
@@ -97,15 +99,16 @@ const ArticleList: React.FC<ArticleListProps> = ({ articles, onArticleSelect, to
           quality={90} // Mejora la calidad
           layout="responsive" // Ajusta la imagen al contenedor
           className={styles.articleImage}
+           onClick={() => onArticleSelect(article)}
 />
               </div>
               <div className={styles.nameArticle}>
                 <h3 onClick={() => onArticleSelect(article)}>{article.titulo}</h3>
                 <p>
-                  {Array.from({ length: Math.round(article.rating) }, (_, index) => (
-                    <FontAwesomeIcon key={index} icon={faStar} style={{ color: '#FFB84D' }} />
-                  ))} {article.rating}
-                </p>
+  {Array.from({ length: Math.round(article.rating) }, (_, index) => (
+    <FontAwesomeIcon key={index} icon={faStar} style={{ color: '#FFB84D' }} />
+  ))} {article.rating.toFixed(1)}
+</p>
               </div>
               <div className={styles.description}>
                 <p>{article.descripcion}</p>
@@ -115,20 +118,33 @@ const ArticleList: React.FC<ArticleListProps> = ({ articles, onArticleSelect, to
                 <p>${article.precio}</p>
 
                 <div>
-                  
-                     <button className={styles.favoriteButton} onClick={() => toggleFavorite(article.id)}>
+                  <div className={styles.tooltipContainer}>
+                    <button className={styles.favoriteButton} onClick={() => toggleFavorite(article.id)}>
                   <FontAwesomeIcon
                     icon={favorites.some(fav => fav.id === article.id) ? solidHeart : regularHeart}
                     style={{ color: 'red', fontSize: '1.5rem' }}
                   />
+                  <span className={styles.tooltipText}>
+      {favorites.some(item => item.id === article.id) ? 'Quitar de favoritos' : 'Agregar a favoritos'}
+    </span>
                 </button>
+                  </div>
+                     
                
                 <div className={styles.tooltipContainer}>
-                  <button className={styles.favoriteButton} onClick={() => toggleCarrito(article.id)}>
-              <FontAwesomeIcon style={{ color: '#3d3d3d', fontSize: '1.5rem', marginLeft:'5px'}} icon={faShoppingCart}></FontAwesomeIcon>
-              <span className={styles.tooltipText}>Agregar al carrito</span>
-          </button>
-                </div>
+  <button
+    className={styles.favoriteButton}
+    onClick={() => toggleCarrito(article.id)}
+  >
+    <FontAwesomeIcon
+      icon={carrito.some(item => item.id === article.id) ? faShoppingCart : faCartPlus}
+      style={{ color: carrito.some(item => item.id === article.id) ? 'green' : 'gray', fontSize: '1.5rem', marginLeft: '5px' }}
+    />
+    <span className={styles.tooltipText}>
+      {carrito.some(item => item.id === article.id) ? 'Quitar del carrito' : 'Agregar al carrito'}
+    </span>
+  </button>
+</div>
                  
                 </div>
               

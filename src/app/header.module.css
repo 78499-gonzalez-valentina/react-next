@@ -89,7 +89,7 @@
 .favoritesList {
   width: 300px;
   position: absolute;
-  top: 60px;
+  top: 70px;
   right: 20px;
   background-color: #f9f9f9;
   padding: 10px;
@@ -203,4 +203,25 @@
     /* Ajusta el tamaño del número */
     font-weight: bold;
 
+}
+
+.comprarCarrito{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.btnComprar{
+  margin-left: 10px;
+    width: 200px;
+    margin-top: 20px;
+    height: 40px;
+    padding: 10px;
+    background-color: #95a9bb;
+    /* Color gris claro */
+    border: none;
+    border-radius: 8px;
+    /* Bordes redondeados */
+    box-shadow: none;
+    transition: box-shadow 0.3s ease;
 }

@@ -15,13 +15,28 @@ const Header: React.FC<{ favoriteCount?: number; carritoCount?: number; carritoL
   const [showFavorites, setShowFavorites] = useState(false);
   const [showCarrito, setShowCarrito] = useState(false);
 
-  const handleFavoritesClick = () => {
-    setShowFavorites(!showFavorites);
-  };
+  
+   const mensaje = () =>{
+  alert("No esta la funcionalidad de compra disponible")
+}
 
-  const handleCarritoClick = () => {
-   setShowCarrito(!showCarrito);
-  };
+const handleFavoritesClick = () => {
+  setShowFavorites((prev) => {
+    if (!prev) {
+      setShowCarrito(false); // Cierra el carrito si está abierto
+    }
+    return !prev;
+  });
+};
+
+const handleCarritoClick = () => {
+  setShowCarrito((prev) => {
+    if (!prev) {
+      setShowFavorites(false); // Cierra favoritos si está abierto
+    }
+    return !prev;
+  });
+};
 
   const handleRemoveFavorite = (index: number) => {
     if (onRemoveFavorite) {
@@ -102,8 +117,18 @@ const shouldRenderCarritoCount = carritoCount !== undefined && carritoCount > 0;
             )}
           </ul>
           </div>
+          <div className={styles.comprarCarrito}>
+  <p className={styles.total}>Total: ${total}</p>
+  <button 
+    className={styles.btnComprar} 
+    onClick={mensaje} 
+    disabled={total === 0}
+  >
+    Comprar
+  </button>
+</div>
          
-          <p className={styles.total}>Total: ${total}</p>
+          
         </div>
       )}
 

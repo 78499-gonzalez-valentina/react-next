@@ -118,7 +118,7 @@
     /* 4 columnas de igual ancho */
     gap: 20px;
     /* Espacio entre las cards */
-    margin: 40px;
+    margin: 20px;
     /* Margen superior e inferior */
   }
 
@@ -203,7 +203,7 @@
 
   .btnVolver {
     margin-left: 60px;
-    width: 200px;
+    width: 250px;
     margin-top: 20px;
     height: 40px;
     padding: 10px;
@@ -739,7 +739,7 @@
 
   .btnVolver {
     margin-left: 60px;
-    width: 250px;
+    width: 200px;
     margin-top: 20px;
     height: 40px;
     padding: 10px;

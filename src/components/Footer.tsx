@@ -19,15 +19,15 @@ const Footer: React.FC = () => {
         display: 'flex', 
         alignItems: 'center', 
         padding: '10px 10px', 
-        marginLeft:'10px',
-        marginTop: '10px',
-        backgroundColor: '#0077b5', 
+        marginLeft:'5px',
+        marginTop: '4px',
+        backgroundColor: 'transparent', 
         color: 'white', 
         border: 'none', 
         borderRadius: '5px', 
         cursor: 'pointer'
       }}>
-        <FontAwesomeIcon icon={faLinkedin} size="1x" style={{ marginRight: '8px' }} />
+        <FontAwesomeIcon icon={faLinkedin} size="2x"  />
        
       </button>
     </a>
