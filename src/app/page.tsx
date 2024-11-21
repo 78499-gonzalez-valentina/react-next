@@ -56,8 +56,11 @@ const HomePage: React.FC = () => {
         onRemoveCarrito={handleRemoveCarrito}
       />
       
-      <main style={{minHeight:'500px'}
-      }>
+      <main  style={{
+    minHeight: 'calc(100vh - 150px)', // 100vh menos la altura del header y footer
+    padding: '20px', // Puedes agregar padding según tus preferencias
+  }}
+      >
         {selectedArticle ? (
           <ArticleDetails
             article={selectedArticle}
