@@ -11,32 +11,41 @@ interface ArticleDetailsProps {
   article: Article;
   onBack: () => void;
   toggleFavorite: (articleId: number) => void;
+   toggleCarrito: (articleId: number) => void;
   favorites: Article[];
+  carrito: Article[];
 }
 
  const mensaje = () =>{
   alert("No esta la funcionalidad de compra disponible")
 }
 
-const ArticleDetails: React.FC<ArticleDetailsProps> = ({ article, onBack, toggleFavorite, favorites }) => {
+const agregado = "Agregaste al carrito! "
+const agregar = "Agregar al carrito"
+
+const ArticleDetails: React.FC<ArticleDetailsProps> = ({ article, onBack, toggleFavorite, favorites, toggleCarrito, carrito }) => {
   const isFavorite = favorites.some(fav => fav.id === article.id);
+  const isCarrito = carrito.some(carr => carr.id === article.id);
 
   return (
     <div>
       <button className={styles.btnVolver} onClick={onBack}>Volver al Listado</button>
       <div className={styles.detailArticle}>
-        <div>
-          <Image
-            src={article.imagen}
-            alt={article.titulo}
-            width={500}
-            height={500}
-            className={styles.articleImageDetail}
-          />
+        <div key={article.id} className={styles.articleDetaill}>
+           <Image
+          src={article.imagen}
+          alt={article.titulo}
+          width={200}
+          height={200}
+          quality={90} 
+          layout="responsive" 
+           objectFit="cover"
+          className={styles.articleImageDetail}
+/>
           <p className={styles.descriptionDetail}>{article.descripcion}</p>
         </div>
          
-        <div>
+        <div className={styles.espacio}>
           <div className={styles.nameDetail}>
               <h2 className={styles.titleNameDetail}>{article.titulo}</h2>
               <button className={styles.favoriteButton} onClick={() => toggleFavorite(article.id)}>
@@ -50,7 +59,7 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = ({ article, onBack, toggle
           
           <p>
             {Array.from({ length: Math.round(article.rating) }, (_, index) => (
-              <FontAwesomeIcon key={index} icon={faStar} style={{ color: 'yellow' }} /> 
+              <FontAwesomeIcon key={index} icon={faStar} style={{ color: '#FFB84D' }} /> 
             ))} {article.rating}
           </p>   
           <p> Calificación {article.rating} de {article.opiniones} opiniones </p>
@@ -59,7 +68,7 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = ({ article, onBack, toggle
           <p>Medios de pago {article.pago}</p>
           <p>Tenés {article.garantía} meses de garantía desde que lo recibís.</p>
           <button className={styles.btnComprar} onClick={mensaje}>Comprar ahora</button>
-          <button className={styles.btnCarrito} onClick={mensaje}>Agregar al carrito</button>
+          <button className={styles.btnCarrito} onClick={() => toggleCarrito(article.id)}>{isCarrito ? agregado: agregar}</button>
           
         </div>
       </div>

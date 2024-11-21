@@ -104,6 +104,15 @@
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   }
 
+  .articleDetaill{
+    width: 300px;
+      background-color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 5px;
+      overflow: hidden;
+  }
+
   .articleItem:hover {
     transform: translateY(-5px);
     /* Elevar ligeramente la card al pasar el ratón */
@@ -118,6 +127,14 @@
     margin-bottom: 5px;
   }
 
+         .articleImage {
+           align-self: center;
+           width: 100%;
+           height: 100%;
+           height:200px;
+           width: 200px;
+           object-fit: cover;
+         }
   .description {
     margin-top: 10px;
     font-size: 15px;
@@ -137,20 +154,20 @@
     transform: scale(1.03);
   }
 
-  .articleImage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 200px;
-    margin-bottom: 20px;
-  }
+
 
   .total {
     margin-left: 5px;
     margin-top: 80px;
   }
 
+  .btnCarritoIcon{
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: transform 0.2s;
+  }
   /* Articulo detalle*/
 
   .btnVolver {
@@ -280,6 +297,7 @@
     margin-left: 60px;
   }
 
+
   .sortLabel {
     margin-right: 10px;
     font-weight: bold;
@@ -339,6 +357,22 @@
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   }
 
+  .articleDetaill{
+    .articleDetaill {
+        width: 200px;
+        background-color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 5px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+      }
+  }
+
+    .espacio {
+          margin-left: 20px;
+        }
   .articleItem:hover {
     transform: translateY(-5px);
     /* Elevar ligeramente la card al pasar el ratón */
@@ -372,14 +406,15 @@
     transform: scale(1.03);
   }
 
-  .articleImage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 200px;
-    margin-bottom: 20px;
-  }
+            .articleImage {
+              align-self: center;
+              width: 100%;
+              height: 100%;
+              height: 220px;
+              width: 220px;
+              object-fit: cover;
+            }
+ 
 
   .total {
     margin-left: 5px;
@@ -409,10 +444,6 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.articleImageDetail {
-  width: 300px;
-  height: 300px;
-}
 
 .detailArticle {
   display: flex;
@@ -542,9 +573,20 @@
     transition: transform 0.2s;
   }
 
+  
+    .articleImage {
+      align-self: center;
+      width: 100%;
+      height: 100%;
+      height: 220px;
+      width: 220px;
+      object-fit: cover;
+    }
+
+
   .favoriteButton:hover {
     transform: scale(1.1);
-    /* Añade un ligero aumento al hacer hover */
+    
   }
 
   .pageDescription {
@@ -554,11 +596,8 @@
   .articleGrid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* 4 columnas de igual ancho */
-    gap: 20px;
-    /* Espacio entre las cards */
+    gap: 15px;
     margin: 40px;
-    /* Margen superior e inferior */
   }
 
   .articleItem {
@@ -573,6 +612,19 @@
     overflow: hidden;
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   }
+
+  .articleDetaill {
+    height: 400px;
+      width: 300px;
+      border: none;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+
+    .espacio{
+      margin-left: 30px;
+    }
 
   .articleItem:hover {
     transform: translateY(-5px);
@@ -607,14 +659,7 @@
     transform: scale(1.03);
   }
 
-  .articleImage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 200px;
-    margin-bottom: 20px;
-  }
+ 
 
   .total {
     margin-left: 5px;
@@ -649,7 +694,8 @@
 
   .articleImageDetail {
     width: 300px;
-    height: 300px;
+    height: 200px;
+  
   }
 
   .detailArticle {
@@ -657,10 +703,15 @@
     flex-direction: row;
     margin-left: 280px;
     margin-top: 15px;
+   
   }
 
   .descriptionDetail {
-    width: 400px;
+    width: 290px;
+    margin-top: 20px;
+    margin-right: 60px;
+    
+
   }
 
   .nameDetail {

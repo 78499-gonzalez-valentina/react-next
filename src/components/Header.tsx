@@ -3,12 +3,24 @@ import React, { useState } from 'react';
 import styles from '../app/header.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
-const Header: React.FC<{ favoriteCount?: number; favoritesList?: string[]; onRemoveFavorite?: (index: number) => void }> = ({ favoriteCount, favoritesList, onRemoveFavorite }) => {
+interface Article {
+  id: number;
+  titulo: string;
+  precio: number; // Agregamos precio
+}
+const Header: React.FC<{ favoriteCount?: number; carritoCount?: number; carritoList?: Article[]; favoritesList?: string[]; onRemoveCarrito?: (index:number) => void, onRemoveFavorite?: (index: number) => void }> = ({ favoriteCount, favoritesList, carritoCount, carritoList, onRemoveFavorite, onRemoveCarrito }) => {
   const [showFavorites, setShowFavorites] = useState(false);
+  const [showCarrito, setShowCarrito] = useState(false);
 
   const handleFavoritesClick = () => {
     setShowFavorites(!showFavorites);
+  };
+
+  const handleCarritoClick = () => {
+   setShowCarrito(!showCarrito);
   };
 
   const handleRemoveFavorite = (index: number) => {
@@ -17,28 +29,79 @@ const Header: React.FC<{ favoriteCount?: number; favoritesList?: string[]; onRem
     }
   };
 
+  const handleRemoveCarrito = (index: number) => {
+    if(onRemoveCarrito){
+      onRemoveCarrito(index);
+    }
+  }
+
+const total = carritoList ? parseFloat(carritoList.reduce((acc, item) => acc + (item.precio ?? 0), 0).toFixed(2)) : 0;
+
   return (
     <header className={styles.header}>
       <div className={styles.titleSection}>
         <h1 className={styles.title}>TechSpot</h1>
       </div>
+     
       <div className={styles.leftSection}>
-        <button className={styles.favoriteButton} onClick={handleFavoritesClick}>
+        <div>
+          <button className={styles.favoriteButton} onClick={handleCarritoClick}>
+              <FontAwesomeIcon style={{ color: 'white', fontSize: '1.5rem', marginRight:'5px'}} icon={faShoppingCart}></FontAwesomeIcon>
+             <span className={styles.favoriteCount}>{carritoCount}</span>
+          </button>
+        </div>
+         <div>
+          <button className={styles.favoriteButton} onClick={handleFavoritesClick}>
           <FontAwesomeIcon icon={faHeart} className={styles.icon} />
           <span className={styles.favoriteCount}>{favoriteCount}</span>
         </button>
+         </div>
+        
       </div>
+ {showCarrito && carritoList && (
+        <div className={styles.carritoList}>
+          <h3>Carrito:</h3>
+          <div className={styles.itemCarrito}>
+                 <ul>
+            {carritoList.length > 0 ? (
+              carritoList.map((item, index) => (
+                <li key={index} className={styles.favoriteItem}>
+                  <div>
+                    {item.titulo}
+                  </div>
+                  <div>
+                    ${item.precio}
+                  
+                
+                  <button className={styles.removeButton} onClick={() => handleRemoveCarrito(index)}>
+                   <FontAwesomeIcon icon={faTimesCircle} className={styles.icon} />
+                  </button>
+                  </div>
+                  
+                  
+                </li>
+              ))
+            ) : (
+              <p>No hay artículos en el carrito.</p>
+            )}
+          </ul>
+          </div>
+         
+          <p className={styles.total}>Total: ${total}</p>
+        </div>
+      )}
 
       {showFavorites && favoritesList && (
         <div className={styles.favoritesList}>
           <h3>Favoritos:</h3>
-          <ul>
+          <div >
+            <ul>
             {favoritesList.length > 0 ? (
               favoritesList.map((item, index) => (
                 <li key={index} className={styles.favoriteItem}>
                   {item}
                   <button className={styles.removeButton} onClick={() => handleRemoveFavorite(index)}>
-                    ✖
+                    <FontAwesomeIcon icon={faTimesCircle}  />
                   </button>
                 </li>
               ))
@@ -46,6 +109,8 @@ const Header: React.FC<{ favoriteCount?: number; favoritesList?: string[]; onRem
               <p>No hay artículos marcados como favoritos.</p>
             )}
           </ul>
+          </div>
+          
         </div>
       )}
     </header>

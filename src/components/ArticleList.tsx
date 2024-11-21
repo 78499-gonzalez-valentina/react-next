@@ -4,36 +4,42 @@ import { Article } from '../types';
 import Image from 'next/image';
 import styles from "../app/styles.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart as solidHeart, faStar } from '@fortawesome/free-solid-svg-icons';
+import {faHeart as solidHeart, faStar, faShoppingCart} from '@fortawesome/free-solid-svg-icons';
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
+
+
 
 interface ArticleListProps {
   articles: Article[];
   onArticleSelect: (article: Article) => void;
   toggleFavorite: (articleId: number) => void;
+  toggleCarrito: (articleId: number) => void;
   favorites: Article[];
+  carrito: Article[];
 }
 
-const ArticleList: React.FC<ArticleListProps> = ({ articles, onArticleSelect, toggleFavorite, favorites }) => {
-  // Añadimos el estado de búsqueda
+const ArticleList: React.FC<ArticleListProps> = ({ articles, onArticleSelect, toggleFavorite, favorites, toggleCarrito}) => {
+
   const [search, setSearch] = useState<string>('');
   const [sortBy, setSortBy] = useState<'relevancia' | 'precioAsc' | 'precioDesc'>('relevancia');
 
-  // Filtrar artículos en base al término de búsqueda
-  const filteredArticles = articles.filter(article =>
-    article.titulo.toLowerCase().includes(search.toLowerCase())
+    const removeAccents = (str: string): string => {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  };
+
+ const filteredArticles = articles.filter(article =>
+    removeAccents(article.titulo).toLowerCase().includes(removeAccents(search).toLowerCase())
   );
 
   const totalArticles = filteredArticles.length;
 
-  // Ordenar los artículos según el criterio seleccionado
   const sortedArticles = [...filteredArticles].sort((a, b) => {
     if (sortBy === 'precioAsc') {
       return a.precio - b.precio;
     } else if (sortBy === 'precioDesc') {
       return b.precio - a.precio;
     } else {
-      return b.rating - a.rating; // Ordenar por relevancia (rating)
+      return b.rating - a.rating; 
     }
   });
 
@@ -84,17 +90,20 @@ const ArticleList: React.FC<ArticleListProps> = ({ articles, onArticleSelect, to
             <div key={article.id} className={styles.articleItem}>
               <div className={styles.articleImage}>
                 <Image
-                  src={article.imagen}
-                  alt={article.titulo}
-                  width={200}
-                  height={200}
-                />
+          src={article.imagen}
+          alt={article.titulo}
+          width={200}
+          height={200}
+          quality={90} // Mejora la calidad
+          layout="responsive" // Ajusta la imagen al contenedor
+          className={styles.articleImage}
+/>
               </div>
               <div className={styles.nameArticle}>
                 <h3 onClick={() => onArticleSelect(article)}>{article.titulo}</h3>
                 <p>
                   {Array.from({ length: Math.round(article.rating) }, (_, index) => (
-                    <FontAwesomeIcon key={index} icon={faStar} style={{ color: 'yellow' }} />
+                    <FontAwesomeIcon key={index} icon={faStar} style={{ color: '#FFB84D' }} />
                   ))} {article.rating}
                 </p>
               </div>
@@ -104,12 +113,17 @@ const ArticleList: React.FC<ArticleListProps> = ({ articles, onArticleSelect, to
 
               <div className={styles.price}>
                 <p>${article.precio}</p>
+              
                 <button className={styles.favoriteButton} onClick={() => toggleFavorite(article.id)}>
                   <FontAwesomeIcon
                     icon={favorites.some(fav => fav.id === article.id) ? solidHeart : regularHeart}
                     style={{ color: 'red', fontSize: '1.5rem' }}
                   />
                 </button>
+                 <button className={styles.favoriteButton} onClick={() => toggleCarrito(article.id)}>
+              <FontAwesomeIcon style={{ color: '#3d3d3d', fontSize: '1.5rem', marginLeft:'5px'}} icon={faShoppingCart}></FontAwesomeIcon>
+             <span className={styles.favoriteCount}></span>
+          </button>
               </div>
             </div>
           ))

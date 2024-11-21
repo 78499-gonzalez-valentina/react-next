@@ -10,6 +10,7 @@ import { articlesData } from '../data/articles';
 const HomePage: React.FC = () => {
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
   const [favorites, setFavorites] = useState<Article[]>([]);
+  const [carrito, setCarrito] = useState<Article[]>([]);
 
   const toggleFavorite = (articleId: number) => {
     setFavorites(prevFavorites => {
@@ -23,8 +24,24 @@ const HomePage: React.FC = () => {
     });
   };
 
+   const toggleCarrito = (articleId: number) => {
+    setCarrito(prevCarrito => {
+      const isCarrito = prevCarrito.some(article => article.id === articleId);
+      if (isCarrito) {
+        return prevCarrito.filter(article => article.id !== articleId);
+      } else {
+        const newCarrito = articlesData.find(article => article.id === articleId);
+        return newCarrito ? [...prevCarrito, newCarrito] : prevCarrito;
+      }
+    });
+  };
+
   const handleRemoveFavorite = (index: number) => {
     setFavorites(prevFavorites => prevFavorites.filter((_, i) => i !== index));
+  };
+
+  const handleRemoveCarrito = (index: number) => {
+    setCarrito(prevCarrito => prevCarrito.filter((_, i) => i!== index));
   };
 
   return (
@@ -33,23 +50,31 @@ const HomePage: React.FC = () => {
       
         favoriteCount={favorites.length}
         favoritesList={favorites.map(article => article.titulo)}
+        carritoCount={carrito.length}
+        carritoList={carrito}
         onRemoveFavorite={handleRemoveFavorite}
+        onRemoveCarrito={handleRemoveCarrito}
       />
       
-      <main>
+      <main style={{minHeight:'500px'}
+      }>
         {selectedArticle ? (
           <ArticleDetails
             article={selectedArticle}
             onBack={() => setSelectedArticle(null)}
             toggleFavorite={toggleFavorite}
+            toggleCarrito={toggleCarrito}
             favorites={favorites}
+            carrito={carrito}
           />
         ) : (
           <ArticleList
             articles={articlesData}
             onArticleSelect={(article) => setSelectedArticle(article)}
             toggleFavorite={toggleFavorite}
+            toggleCarrito={toggleCarrito}
             favorites={favorites}
+            carrito={carrito}
           />
         )}
       </main>
