@@ -64,7 +64,7 @@ const shouldRenderCarritoCount = carritoCount !== undefined && carritoCount > 0;
   return (
     <header className={styles.header}>
       <div className={styles.titleSection}>
-        <h1 className={styles.title}>TechSpot</h1>
+        <h1 className={styles.title}>TS</h1>
       </div>
      
       <div className={styles.leftSection}>

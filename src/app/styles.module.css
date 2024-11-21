@@ -18,13 +18,13 @@
 
   .titleInput {
     margin-top: 25px;
-    margin-left: 30px;
+    margin-left: 15px;
     font-size: 25px;
     margin-bottom: 5px;
   }
 
   .nameInput {
-    margin-left: 30px;
+    margin-left: 15px;
     width: 300px;
     margin-top: 5px;
     height: 30px;
@@ -349,6 +349,12 @@
          .nameDetail {
            display: none;
          }
+                 .tituloPrincipal {
+                   margin-left: 40px;
+                   font-size: 28px;
+                   font-weight: bold;
+                   margin-bottom: 10px;
+                 }
 }
 
 /* Estilos para tablet */
@@ -359,6 +365,12 @@
   
   }
 
+    .tituloPrincipal {
+      margin-left: 50px;
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
   .searchContainer {
     display: flex;
     flex-direction: column;
@@ -366,13 +378,13 @@
 
   .titleInput {
     margin-top: 25px;
-    margin-left: 80px;
+    margin-left: 40px;
     font-size: 25px;
     margin-bottom: 5px;
   }
 
   .nameInput {
-    margin-left: 80px;
+    margin-left: 40px;
     width: 400px;
     margin-top: 5px;
     height: 30px;
@@ -396,7 +408,7 @@
     margin-top: 20px;
     display: flex;
     align-items: center;
-    margin-left: 80px;
+    margin-left: 60px;
   }
 
 
@@ -1031,6 +1043,13 @@
       .tooltipContainer:hover .tooltipText {
              visibility: visible;
            opacity: 1;
+     }
+
+     .tituloPrincipal{
+      margin-left: 50px;
+       font-size: 30px;
+       font-weight: bold;
+       margin-bottom: 10px;
      }
 
 
