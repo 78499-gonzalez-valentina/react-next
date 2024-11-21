@@ -85,10 +85,22 @@ const ArticleList: React.FC<ArticleListProps> = ({ articles, onArticleSelect, to
 
       <div className={styles.articleGrid}>
         {filteredArticles.length === 0 ? (
-          <div className={styles.noResults}>
+          <div className={styles.noResultsContainer}>
+            <div className={styles.noResults}>
+            <Image
+    src="/img/rb_18236.png" // Ruta de la imagen en la carpeta `public`
+    alt="No se encontraron productos"
+    width={200}
+    height={200}
+    quality={90} // Mejora la calidad
+    layout="responsive" // Ajusta la imagen al contenedor
+    className={styles.articleImage}
+  />
             <h3>No se encontraron productos</h3>
-            <p>No hay productos que coincidan con tu búsqueda.</p>
+            <p>No hay productos que coincidan con tu búsqueda. Intenta ajustar tus filtros o verifica que el nombre que estás buscando sea correcto.</p>
           </div>
+          </div>
+          
         ) : (
           sortedArticles.map((article) => (
             <div key={article.id} className={styles.articleItem}>
@@ -106,11 +118,12 @@ const ArticleList: React.FC<ArticleListProps> = ({ articles, onArticleSelect, to
               </div>
               <div className={styles.nameArticle}>
                 <h3 onClick={() => onArticleSelect(article)}>{article.titulo}</h3>
-                <p className={styles.rating}>
-  {Array.from({ length: Math.round(article.rating) }, (_, index) => (
-    <FontAwesomeIcon key={index} icon={faStar} style={{ color: '#FFB84D' }} />
-  ))} {article.rating.toFixed(1)}
-</p>
+    
+
+      <p className={styles.ratingOneStar}>
+        <FontAwesomeIcon icon={faStar} style={{ color: '#FFB84D' }} />
+        {` ${article.rating.toFixed(1)}`}
+      </p>
               </div>
               <div className={styles.description}>
                 <p>{article.descripcion}</p>
