@@ -4,7 +4,7 @@ import styles from '../app/header.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import {faTimesCircle, faStar} from '@fortawesome/free-solid-svg-icons';
+import {faTimesCircle} from '@fortawesome/free-solid-svg-icons';
 
 interface Article {
   id: number;
@@ -37,6 +37,8 @@ const Header: React.FC<{ favoriteCount?: number; carritoCount?: number; carritoL
 
 const total = carritoList ? parseFloat(carritoList.reduce((acc, item) => acc + (item.precio ?? 0), 0).toFixed(2)) : 0;
 
+const shouldRenderCarritoCount = carritoCount !== undefined && carritoCount > 0;
+
   return (
     <header className={styles.header}>
       <div className={styles.titleSection}>
@@ -45,16 +47,30 @@ const total = carritoList ? parseFloat(carritoList.reduce((acc, item) => acc + (
      
       <div className={styles.leftSection}>
         <div>
-          <button className={styles.favoriteButton} onClick={handleCarritoClick}>
-              <FontAwesomeIcon style={{ color: 'white', fontSize: '1.5rem', marginRight:'5px'}} icon={faShoppingCart}></FontAwesomeIcon>
-             <span className={styles.favoriteCount}>{carritoCount}</span>
-          </button>
+          
+          <button className={styles.favoriteButton} onClick={handleFavoritesClick}>
+            <div className={styles.cartIconContainer}>
+               <FontAwesomeIcon icon={faHeart} className={styles.icon} />
+          {(favoriteCount ?? 0) > 0  && (
+            <span className={styles.favoriteCount}>{favoriteCount}</span>
+          )}
+            </div>
+         
+          
+          
+        </button>
+          
         </div>
          <div>
-          <button className={styles.favoriteButton} onClick={handleFavoritesClick}>
-          <FontAwesomeIcon icon={faHeart} className={styles.icon} />
-          <span className={styles.favoriteCount}>{favoriteCount}</span>
-        </button>
+          <button className={styles.favoriteButton} onClick={handleCarritoClick}>
+      <div className={styles.cartIconContainer}>
+        <FontAwesomeIcon style={{ color: 'white', fontSize: '1.5rem', marginRight: '5px' }} icon={faShoppingCart} />
+        {shouldRenderCarritoCount && (
+  <span className={styles.carritoCount}>{carritoCount}</span>
+)}
+      </div>
+</button>
+          
          </div>
         
       </div>
@@ -93,7 +109,7 @@ const total = carritoList ? parseFloat(carritoList.reduce((acc, item) => acc + (
 
       {showFavorites && favoritesList && (
         <div className={styles.favoritesList}>
-          <h3>Favoritos <FontAwesomeIcon icon={faStar} style={{ color: '#FFB84D' }} /></h3>
+          <h3>Favoritos <FontAwesomeIcon icon={faHeart} style={{ color: 'red' }} /></h3>
           <div >
             <ul>
             {favoritesList.length > 0 ? (
