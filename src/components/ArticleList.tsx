@@ -113,17 +113,26 @@ const ArticleList: React.FC<ArticleListProps> = ({ articles, onArticleSelect, to
 
               <div className={styles.price}>
                 <p>${article.precio}</p>
-              
-                <button className={styles.favoriteButton} onClick={() => toggleFavorite(article.id)}>
+
+                <div>
+                  
+                     <button className={styles.favoriteButton} onClick={() => toggleFavorite(article.id)}>
                   <FontAwesomeIcon
                     icon={favorites.some(fav => fav.id === article.id) ? solidHeart : regularHeart}
                     style={{ color: 'red', fontSize: '1.5rem' }}
                   />
                 </button>
-                 <button className={styles.favoriteButton} onClick={() => toggleCarrito(article.id)}>
+               
+                <div className={styles.tooltipContainer}>
+                  <button className={styles.favoriteButton} onClick={() => toggleCarrito(article.id)}>
               <FontAwesomeIcon style={{ color: '#3d3d3d', fontSize: '1.5rem', marginLeft:'5px'}} icon={faShoppingCart}></FontAwesomeIcon>
-             <span className={styles.favoriteCount}></span>
+              <span className={styles.tooltipText}>Agregar al carrito</span>
           </button>
+                </div>
+                 
+                </div>
+              
+               
               </div>
             </div>
           ))

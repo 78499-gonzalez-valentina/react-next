@@ -4,7 +4,7 @@ import styles from '../app/header.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import {faTimesCircle, faStar} from '@fortawesome/free-solid-svg-icons';
 
 interface Article {
   id: number;
@@ -93,7 +93,7 @@ const total = carritoList ? parseFloat(carritoList.reduce((acc, item) => acc + (
 
       {showFavorites && favoritesList && (
         <div className={styles.favoritesList}>
-          <h3>Favoritos:</h3>
+          <h3>Favoritos <FontAwesomeIcon icon={faStar} style={{ color: '#FFB84D' }} /></h3>
           <div >
             <ul>
             {favoritesList.length > 0 ? (

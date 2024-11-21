@@ -68,6 +68,8 @@
     background: none;
     border: none;
     padding: 0;
+    margin: 5px;
+    margin-top: 10px;
     cursor: pointer;
     transition: transform 0.2s;
   }
@@ -321,6 +323,8 @@
     background: none;
     border: none;
     padding: 0;
+    margin: 5px;
+      margin-top: 15px;
     cursor: pointer;
     transition: transform 0.2s;
   }
@@ -569,6 +573,8 @@
     background: none;
     border: none;
     padding: 0;
+    margin: 5px;
+      margin-top: 15px;
     cursor: pointer;
     transition: transform 0.2s;
   }
@@ -756,4 +762,36 @@
     box-shadow: none;
     transition: box-shadow 0.3s ease;
   }
+
+    .tooltipContainer {
+      position: relative;
+      display: inline-block;
+    }
+
+    
+        .tooltipText {
+          font-size: 13px;
+          visibility: hidden;
+          width: 100px;
+          background-color: #333;
+          color: #fff;
+          text-align: center;
+          padding: 2px;
+          border-radius: 5px;
+          position: absolute;
+          z-index: 1000;
+          top: 125%;
+          left: 2px;
+          transform: translateX(-50%);
+          opacity: 0;
+          transition: opacity 0.3s;
+        }
+
+      .tooltipContainer:hover .tooltipText {
+             visibility: visible;
+           opacity: 1;
+     }
+
+
+  
 }
