@@ -115,11 +115,8 @@
   .articleGrid {
     display: grid;
     grid-template-columns: 1fr;
-    /* 4 columnas de igual ancho */
     gap: 20px;
-    /* Espacio entre las cards */
-    margin: 20px;
-    /* Margen superior e inferior */
+    margin: 10px;
   }
 
   .articleItem {
@@ -390,7 +387,7 @@
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   }
 
-  .articleDetaill{
+
     .articleDetaill {
         width: 200px;
         background-color: white;
@@ -401,7 +398,7 @@
         overflow: hidden;
         transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
       }
-  }
+  
 
     .espacio {
           margin-left: 20px;
@@ -533,7 +530,7 @@
    padding: 2px;
    border-radius: 5px;
    position: absolute;
-   z-index: 1000;
+   z-index: 9999;
    top: 125%;
    left: 2px;
    transform: translateX(-50%);
@@ -708,7 +705,7 @@
   .description {
     margin-top: 10px;
     font-size: 15px;
-    width: 300px;
+    width: 280px;
   }
 
   .price {

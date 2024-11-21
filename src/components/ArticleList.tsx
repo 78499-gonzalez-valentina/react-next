@@ -106,7 +106,7 @@ const ArticleList: React.FC<ArticleListProps> = ({ articles, onArticleSelect, to
               </div>
               <div className={styles.nameArticle}>
                 <h3 onClick={() => onArticleSelect(article)}>{article.titulo}</h3>
-                <p>
+                <p className={styles.rating}>
   {Array.from({ length: Math.round(article.rating) }, (_, index) => (
     <FontAwesomeIcon key={index} icon={faStar} style={{ color: '#FFB84D' }} />
   ))} {article.rating.toFixed(1)}

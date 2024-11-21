@@ -5,11 +5,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import {faTimesCircle} from '@fortawesome/free-solid-svg-icons';
+import Image from 'next/image';
 
 interface Article {
   id: number;
   titulo: string;
-  precio: number; // Agregamos precio
+  precio: number; 
+  imagen: string;// Agregamos precio
 }
 
 interface ArticleInCarrito extends Article {
@@ -57,7 +59,6 @@ const total = carritoList
         .toFixed(2)
     )
   : 0;
-  
 const shouldRenderCarritoCount = carritoCount !== undefined && carritoCount > 0;
 
   return (
@@ -103,6 +104,16 @@ const shouldRenderCarritoCount = carritoCount !== undefined && carritoCount > 0;
             {carritoList.length > 0 ? (
               carritoList.map((item, index) => (
                  <li key={index}>
+                            <Image
+            src={item.imagen}
+            alt={item.titulo}
+            width={50}        // Ancho deseado de la imagen
+            height={50}       // Alto deseado de la imagen
+            objectFit="cover" // Mantener la proporción de la imagen
+            style={{
+              marginRight: '10px' // Espacio entre la imagen y el texto
+            }}
+          />
               <div style={{fontWeight:'bold', marginBottom:'5px'}}>{item.titulo}</div>
               <div>Precio: ${(item.precio * item.cantidad).toFixed(2)}</div>
               <div className={styles.cantidadEliminar}>
