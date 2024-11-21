@@ -225,3 +225,32 @@
     box-shadow: none;
     transition: box-shadow 0.3s ease;
 }
+
+.modificarCantidad{
+  margin-top: 5px;
+
+}
+
+.cantidadEliminar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.btnCantidad{
+  border: none;
+  border-radius: 5px;
+ width: 50px;
+ height: 20px;
+  margin: 5px;
+  background-color: #b4c0ca;
+}
+
+.itemCarrito{
+  border-bottom: 1px #3d3d3d solid;
+}
+
+.itemCarrito li{
+  background-color: #e5eef7;
+  border-radius: 10px;
+}

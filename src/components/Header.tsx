@@ -11,7 +11,12 @@ interface Article {
   titulo: string;
   precio: number; // Agregamos precio
 }
-const Header: React.FC<{ favoriteCount?: number; carritoCount?: number; carritoList?: Article[]; favoritesList?: string[]; onRemoveCarrito?: (index:number) => void, onRemoveFavorite?: (index: number) => void }> = ({ favoriteCount, favoritesList, carritoCount, carritoList, onRemoveFavorite, onRemoveCarrito }) => {
+
+interface ArticleInCarrito extends Article {
+  cantidad: number;
+}
+
+const Header: React.FC<{  toggleCarrito: (articleId: number) => void; handleChangeQuantity: (articleId: number, newQuantity: number) => void; favoriteCount?: number; carritoCount?: number; carritoList: ArticleInCarrito[];favoritesList?: string[]; onRemoveCarrito?: (index:number) => void, onRemoveFavorite?: (index: number) => void }> = ({ favoriteCount, favoritesList, carritoCount, carritoList, onRemoveFavorite,  handleChangeQuantity, toggleCarrito }) => {
   const [showFavorites, setShowFavorites] = useState(false);
   const [showCarrito, setShowCarrito] = useState(false);
 
@@ -44,14 +49,15 @@ const handleCarritoClick = () => {
     }
   };
 
-  const handleRemoveCarrito = (index: number) => {
-    if(onRemoveCarrito){
-      onRemoveCarrito(index);
-    }
-  }
 
-const total = carritoList ? parseFloat(carritoList.reduce((acc, item) => acc + (item.precio ?? 0), 0).toFixed(2)) : 0;
-
+const total = carritoList
+  ? parseFloat(
+      carritoList
+        .reduce((acc, item) => acc + item.precio * item.cantidad, 0)
+        .toFixed(2)
+    )
+  : 0;
+  
 const shouldRenderCarritoCount = carritoCount !== undefined && carritoCount > 0;
 
   return (
@@ -96,21 +102,28 @@ const shouldRenderCarritoCount = carritoCount !== undefined && carritoCount > 0;
                  <ul>
             {carritoList.length > 0 ? (
               carritoList.map((item, index) => (
-                <li key={index} className={styles.favoriteItem}>
-                  <div>
-                    {item.titulo}
-                  </div>
-                  <div>
-                    ${item.precio}
-                  
-                
-                  <button className={styles.removeButton} onClick={() => handleRemoveCarrito(index)}>
-                   <FontAwesomeIcon icon={faTimesCircle} className={styles.icon} />
-                  </button>
-                  </div>
-                  
-                  
-                </li>
+                 <li key={index}>
+              <div style={{fontWeight:'bold', marginBottom:'5px'}}>{item.titulo}</div>
+              <div>Precio: ${(item.precio * item.cantidad).toFixed(2)}</div>
+              <div className={styles.cantidadEliminar}>
+                <div className={styles.modificarCantidad}>
+                <button className={styles.btnCantidad} 
+                  onClick={() => handleChangeQuantity(item.id, item.cantidad - 1)}
+                  disabled={item.cantidad === 1} // Deshabilita si la cantidad es 1
+                >
+                  -
+                </button>
+                <span>{item.cantidad}</span>
+                <button className={styles.btnCantidad} onClick={() => handleChangeQuantity(item.id, item.cantidad + 1)}>
+                  +
+                </button>
+              </div>
+              <div>
+                <button className={styles.removeButton} onClick={() => toggleCarrito(item.id)}><FontAwesomeIcon icon={faTimesCircle}></FontAwesomeIcon></button>
+              </div>
+              </div>
+              
+            </li>
               ))
             ) : (
               <p>No hay artículos en el carrito.</p>

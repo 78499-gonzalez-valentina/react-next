@@ -7,10 +7,14 @@ import ArticleDetails from '../components/ArticleDetail';
 import { Article } from '../types';
 import { articlesData } from '../data/articles';
 
+interface ArticleInCarrito extends Article {
+  cantidad: number;
+}
 const HomePage: React.FC = () => {
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
   const [favorites, setFavorites] = useState<Article[]>([]);
-  const [carrito, setCarrito] = useState<Article[]>([]);
+  const [carrito, setCarrito] = useState<ArticleInCarrito[]>([]);
+  
 
   const toggleFavorite = (articleId: number) => {
     setFavorites(prevFavorites => {
@@ -23,16 +27,33 @@ const HomePage: React.FC = () => {
       }
     });
   };
+  
+const toggleCarrito = (articleId: number) => {
+  setCarrito(prevCarrito => {
+    const existingArticleIndex = prevCarrito.findIndex(article => article.id === articleId);
 
-   const toggleCarrito = (articleId: number) => {
+    if (existingArticleIndex !== -1) {
+      // Si el artículo ya está en el carrito, eliminarlo
+      return prevCarrito.filter(article => article.id !== articleId);
+    } else {
+      // Si el artículo no está en el carrito, agregarlo con cantidad inicial de 1
+      const newArticle = articlesData.find(article => article.id === articleId);
+      return newArticle ? [...prevCarrito, { ...newArticle, cantidad: 1 }] : prevCarrito;
+    }
+  });
+};
+
+ const handleChangeQuantity = (articleId: number, newQuantity: number) => {
     setCarrito(prevCarrito => {
-      const isCarrito = prevCarrito.some(article => article.id === articleId);
-      if (isCarrito) {
+      if (newQuantity <= 0) {
+        // Si la cantidad es 0 o menor, elimina el artículo del carrito
         return prevCarrito.filter(article => article.id !== articleId);
-      } else {
-        const newCarrito = articlesData.find(article => article.id === articleId);
-        return newCarrito ? [...prevCarrito, newCarrito] : prevCarrito;
       }
+
+      // Actualiza la cantidad del artículo
+      return prevCarrito.map(article =>
+        article.id === articleId ? { ...article, cantidad: newQuantity } : article
+      );
     });
   };
 
@@ -47,13 +68,14 @@ const HomePage: React.FC = () => {
   return (
     <div>
       <Header
-      
+         toggleCarrito={toggleCarrito}      
         favoriteCount={favorites.length}
         favoritesList={favorites.map(article => article.titulo)}
         carritoCount={carrito.length}
         carritoList={carrito}
         onRemoveFavorite={handleRemoveFavorite}
         onRemoveCarrito={handleRemoveCarrito}
+         handleChangeQuantity={handleChangeQuantity}
       />
       
       <main  style={{

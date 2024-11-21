@@ -11,3 +11,4 @@ export type Article = {
   pago:string;
   garantía: number;
 };
+
