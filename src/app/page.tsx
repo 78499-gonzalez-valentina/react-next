@@ -57,7 +57,7 @@ const HomePage: React.FC = () => {
       />
       
       <main  style={{
-    minHeight: 'calc(100vh - 150px)', // 100vh menos la altura del header y footer
+    minHeight: 'calc(90vh - 150px)', // 100vh menos la altura del header y footer
     padding: '20px', // Puedes agregar padding según tus preferencias
   }}
       >
