@@ -63,7 +63,9 @@ const ArticleList: React.FC<ArticleListProps> = ({ articles, onArticleSelect, to
               onChange={(e) => setSearch(e.target.value)}
             />
           </div>
-          <p className={styles.total}>{totalArticles} productos</p>
+          <p className={styles.total}>
+  {totalArticles} {totalArticles === 1 ? 'producto' : 'productos'}
+</p>
         </div>
 
         <div className={styles.sortContainer}>
