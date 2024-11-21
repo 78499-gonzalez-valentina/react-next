@@ -32,6 +32,27 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = ({ article, onBack, toggle
     <div>
       <button className={styles.btnVolver} onClick={onBack}><FontAwesomeIcon icon={faArrowLeft} /> Volver al Listado</button>
       <div className={styles.detailArticle}>
+         <div className={styles.dispositivosPequeños}>
+          <div className={styles.pequeño}>
+            <div className={styles.titlePequeñoo}>
+              <h2 className={styles.titlePequeño}>{article.titulo}</h2>
+    <button  className={styles.btnPequeño} onClick={() => toggleFavorite(article.id)}>
+      <FontAwesomeIcon
+        icon={isFavorite ? solidHeart : regularHeart}
+        style={{ color: 'red', fontSize: '1.5rem' }}
+      />
+    </button>
+            </div>
+            
+    <p className={styles.ratingOneStar}>
+        <FontAwesomeIcon icon={faStar} style={{ color: '#FFB84D', fontSize: '1.5rem' }} />
+        {` ${article.rating.toFixed(1)}`}
+      </p>
+          </div>
+    
+    
+    <p className={styles.precioPequeño}>${article.precio}</p>
+  </div>
         <div key={article.id} className={styles.articleDetaill}>
            <Image
           src={article.imagen}
@@ -42,10 +63,13 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = ({ article, onBack, toggle
           layout="responsive" 
            objectFit="cover"
           className={styles.articleImageDetail}
-/>
+/>        
+          <p style={{fontWeight:'600'}}>Descripción</p>
           <p className={styles.descriptionDetail}>{article.descripcion}</p>
         </div>
          
+
+
         <div className={styles.espacio}>
           <div className={styles.nameDetail}>
               <h2 className={styles.titleNameDetail}>{article.titulo}</h2>
@@ -58,7 +82,7 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = ({ article, onBack, toggle
           </div>
           
           
-          <p>
+          <p className={styles.ratingDetail}>
             {Array.from({ length: Math.round(article.rating) }, (_, index) => (
               <FontAwesomeIcon key={index} icon={faStar} style={{ color: '#FFB84D' }} /> 
             ))} {article.rating.toFixed(1)}

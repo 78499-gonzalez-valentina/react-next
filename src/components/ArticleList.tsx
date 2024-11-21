@@ -48,7 +48,7 @@ const ArticleList: React.FC<ArticleListProps> = ({ articles, onArticleSelect, to
   return (
     <div>
       <div className={styles.pageDescription}>
-        <p>Bienvenido a TechSpot, tu tienda en línea para los mejores productos electrónicos. Encuentra los dispositivos más avanzados del mercado. ¡Explora y descubre lo último en tecnología!</p>
+        <p>Bienvenido a TechSpot, tu destino en línea para los productos electrónicos más innovadores y de alta calidad. Nos enorgullece ofrecerte una selección de los dispositivos más avanzados del mercado, cuidadosamente elegidos para satisfacer tus necesidades tecnológicas.</p>
       </div>
 
       <div className={styles.searchContainer}>

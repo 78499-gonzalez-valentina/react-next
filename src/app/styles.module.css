@@ -8,7 +8,9 @@
     justify-content: center;
     border-bottom: 3px solid #3d3d3d;
   }
-
+.favoriteButton{
+  display: none;
+}
   .searchContainer {
     display: flex;
     flex-direction: column;
@@ -180,17 +182,34 @@
     margin-top: 10px;
     font-size: 18px;
     font-weight: 600;
+    display: none;
+  }
+
+  .ratingDetail{
+    display: none;
   }
 
   .article-item:hover {
     transform: scale(1.03);
   }
 
-
+.espacio{
+  padding: 30px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
 
   .total {
     margin-left: 200px;
     margin-top: 15px;
+  }
+  .precioPequeño{
+    margin-left: 50px;
+    font-weight: 500;
+    font-size: 18px;
+    padding:10px;
+    background-color: #f1f1f1;
+    border-radius: 30px;
+    width: 100px;
   }
 
   .btnCarritoIcon{
@@ -200,7 +219,37 @@
       cursor: pointer;
       transition: transform 0.2s;
   }
-  /* Articulo detalle*/
+    .dispositivosPequeños {
+  
+      display: block;
+      padding: 10px;
+      width: 400px;
+      margin-bottom: 15px;
+  
+    }
+        .pequeño {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+    
+        }
+    
+        .btnPequeño {
+          background: none;
+          border: none;
+          margin-left: 5px;
+          padding: 0;
+          margin: 5px;
+          margin-top: 5px;
+          cursor: pointer;
+          transition: transform 0.2s;
+        }
+  
+    
+        .titlePequeñoo {
+          display: flex;
+          flex-direction: row;
+        }
 
   .btnVolver {
     margin-left: 60px;
@@ -229,6 +278,8 @@
 
   .detailArticle {
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column !important;
     margin-left: 20px !important;
     margin-top: 15px;
@@ -295,6 +346,9 @@
        text-align: center;
        padding: 20px;
      }
+         .nameDetail {
+           display: none;
+         }
 }
 
 /* Estilos para tablet */
@@ -373,6 +427,7 @@
       margin-top: 15px;
     cursor: pointer;
     transition: transform 0.2s;
+    display: none;
   }
 
   .favoriteButton:hover {
@@ -415,12 +470,12 @@
 
 
     .articleDetaill {
-        width: 200px;
+        width: 400px;
+        margin-left: 30px;
         background-color: white;
         border: none;
         border-radius: 10px;
         padding: 5px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         overflow: hidden;
         transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
       }
@@ -431,8 +486,21 @@
                           /* Muestra solo una estrella en pantallas pequeñas */
                         }
     .espacio {
+      padding: 30px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
           margin-left: 20px;
         }
+
+.dispositivosPequeños {
+        
+     display: block;
+        
+     }
+
+.nameDetail{
+  display: none;
+              }
+
   .articleItem:hover {
     transform: translateY(-5px);
     /* Elevar ligeramente la card al pasar el ratón */
@@ -440,6 +508,16 @@
     /* Aumentar la sombra al pasar el ratón para resaltarla */
   }
 
+  .precioPequeño{
+    margin-left:150px ;
+    font-weight: 500;
+      font-weight: 500;
+      font-size: 18px;
+      padding: 10px;
+      background-color: #f1f1f1;
+      border-radius: 30px;
+      width: 100px;
+  }
   .nameArticle {
     display: flex;
     flex-direction: row;
@@ -461,8 +539,12 @@
     margin-top: 10px;
     font-size: 18px;
     font-weight: 600;
+    display: none;
   }
 
+  .ratingDetail{
+    display: none;
+  }
   .article-item:hover {
     transform: scale(1.03);
   }
@@ -508,11 +590,38 @@
 
 .detailArticle {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin-left: 50px;
   margin-top: 15px;
 }
+.dispositivosPequeños{
+  display: flex;
+  flex-direction: column;
+  border-bottom: 2px #3d3d3d solid;
+  margin-bottom: 20px;
+}
 
+
+.pequeño{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  
+}
+.btnPequeño{
+  background: none;
+    border: none;
+    padding: 0;
+    margin: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.titlePequeñoo{
+  display: flex;
+  flex-direction: row;
+}
 .descriptionDetail {
   width: 400px;
 }
@@ -524,6 +633,7 @@
 
 .titleNameDetail {
   margin-right: 20px;
+  display: none;
 }
 
 .article-item button:hover {
@@ -619,13 +729,13 @@
 
   .titleInput {
     margin-top: 25px;
-    margin-left: 80px;
+    margin-left: 35px;
     font-size: 25px;
     margin-bottom: 5px;
   }
 
   .nameInput {
-    margin-left: 80px;
+    margin-left: 35px;
     width: 500px;
     margin-top: 5px;
     height: 30px;
@@ -732,7 +842,16 @@
     }
 
     .espacio{
+      border-radius: 10px;
+      padding:30px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
       margin-left: 30px;
+    }
+
+    .dispositivosPequeños{
+     
+          display: none;
+      
     }
 
         .ratingOneStar {
@@ -843,10 +962,12 @@
   .nameDetail {
     display: flex;
     flex-direction: row;
+  
   }
 
   .titleNameDetail {
     margin-right: 20px;
+      display: block;
   }
 
   .article-item button:hover {
