@@ -11,7 +11,7 @@ interface Article {
   id: number;
   titulo: string;
   precio: number; 
-  imagen: string;// Agregamos precio
+  imagen: string;
 }
 
 interface ArticleInCarrito extends Article {
@@ -23,7 +23,7 @@ const Header: React.FC<{  toggleCarrito: (articleId: number) => void; handleChan
   const [showCarrito, setShowCarrito] = useState(false);
 
   
-   const mensaje = () =>{
+   const mensaje = () =>{ //msj para btn compra
   alert("No esta la funcionalidad de compra disponible")
 }
 
@@ -45,14 +45,14 @@ const handleCarritoClick = () => {
   });
 };
 
-  const handleRemoveFavorite = (index: number) => {
+  const handleRemoveFavorite = (index: number) => { //Eliminar de favoritos
     if (onRemoveFavorite) {
       onRemoveFavorite(index);
     }
   };
 
 
-const total = carritoList
+const total = carritoList //  Total carrito
   ? parseFloat(
       carritoList
         .reduce((acc, item) => acc + item.precio * item.cantidad, 0)
@@ -73,13 +73,10 @@ const shouldRenderCarritoCount = carritoCount !== undefined && carritoCount > 0;
           <button className={styles.favoriteButton} onClick={handleFavoritesClick}>
             <div className={styles.cartIconContainer}>
                <FontAwesomeIcon icon={faHeart} className={styles.icon} />
-          {(favoriteCount ?? 0) > 0  && (
+          {(favoriteCount ?? 0) > 0  && (//todo lo que se muestra al abrir los favoritos
             <span className={styles.favoriteCount}>{favoriteCount}</span>
           )}
-            </div>
-         
-          
-          
+            </div>   
         </button>
           
         </div>
@@ -96,9 +93,9 @@ const shouldRenderCarritoCount = carritoCount !== undefined && carritoCount > 0;
          </div>
         
       </div>
- {showCarrito && carritoList && (
+ {showCarrito && carritoList && ( //todo lo que se muestra al abrir el carrito
         <div className={styles.carritoList}>
-          <h3>Carrito:</h3>
+          <h3>Carrito:</h3> 
           <div className={styles.itemCarrito}>
                  <ul>
             {carritoList.length > 0 ? (
@@ -107,11 +104,11 @@ const shouldRenderCarritoCount = carritoCount !== undefined && carritoCount > 0;
                             <Image
             src={item.imagen}
             alt={item.titulo}
-            width={50}        // Ancho deseado de la imagen
-            height={50}       // Alto deseado de la imagen
-            objectFit="cover" // Mantener la proporción de la imagen
+            width={50}       
+            height={50}       
+            objectFit="cover" 
             style={{
-              marginRight: '10px' // Espacio entre la imagen y el texto
+              marginRight: '10px' 
             }}
           />
               <div style={{fontWeight:'bold', marginBottom:'5px'}}>{item.titulo}</div>
@@ -120,7 +117,7 @@ const shouldRenderCarritoCount = carritoCount !== undefined && carritoCount > 0;
                 <div className={styles.modificarCantidad}>
                 <button className={styles.btnCantidad} 
                   onClick={() => handleChangeQuantity(item.id, item.cantidad - 1)}
-                  disabled={item.cantidad === 1} // Deshabilita si la cantidad es 1
+                  disabled={item.cantidad === 1} //lo deshabilita si es 1 la cantidad
                 >
                   -
                 </button>

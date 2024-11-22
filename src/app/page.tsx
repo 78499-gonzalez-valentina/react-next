@@ -46,7 +46,6 @@ const toggleCarrito = (articleId: number) => {
  const handleChangeQuantity = (articleId: number, newQuantity: number) => {
     setCarrito(prevCarrito => {
       if (newQuantity <= 0) {
-        // Si la cantidad es 0 o menor, elimina el artículo del carrito
         return prevCarrito.filter(article => article.id !== articleId);
       }
 
@@ -79,11 +78,11 @@ const toggleCarrito = (articleId: number) => {
       />
       
       <main  style={{
-    minHeight: 'calc(90vh - 150px)', // 100vh menos la altura del header y footer
-    padding: '20px', // Puedes agregar padding según tus preferencias
+    minHeight: 'calc(90vh - 150px)', 
+    padding: '20px', 
   }}
       >
-        {selectedArticle ? (
+        {selectedArticle ? ( //si hay articulo seleccionado renderiza el detalle de ese articulo
           <ArticleDetails
             article={selectedArticle}
             onBack={() => setSelectedArticle(null)}
@@ -92,7 +91,7 @@ const toggleCarrito = (articleId: number) => {
             favorites={favorites}
             carrito={carrito}
           />
-        ) : (
+        ) : ( // sino muestra toda la lista
           <ArticleList
             articles={articlesData}
             onArticleSelect={(article) => setSelectedArticle(article)}

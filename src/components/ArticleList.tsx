@@ -89,12 +89,12 @@ const ArticleList: React.FC<ArticleListProps> = ({ articles, onArticleSelect, to
           <div className={styles.noResultsContainer}>
             <div className={styles.noResults}>
             <Image
-    src="/img/rb_18236.png" // Ruta de la imagen en la carpeta `public`
+    src="/img/rb_18236.png" 
     alt="No se encontraron productos"
     width={200}
     height={200}
-    quality={90} // Mejora la calidad
-    layout="responsive" // Ajusta la imagen al contenedor
+    quality={90} 
+    layout="responsive" 
     className={styles.articleImage}
   />
             <h3>No se encontraron productos</h3>
@@ -111,8 +111,8 @@ const ArticleList: React.FC<ArticleListProps> = ({ articles, onArticleSelect, to
           alt={article.titulo}
           width={200}
           height={200}
-          quality={90} // Mejora la calidad
-          layout="responsive" // Ajusta la imagen al contenedor
+          quality={90} 
+          layout="responsive" 
           className={styles.articleImage}
            onClick={() => onArticleSelect(article)}
 />

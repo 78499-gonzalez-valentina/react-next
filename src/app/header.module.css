@@ -73,15 +73,15 @@
   font-size: 1.2rem;
   position: absolute;
     top: -5px;
-    /* Ajusta la posición vertical */
+
     right: -5px;
-    /* Ajusta la posición horizontal */
+
     background-color: beige;
     color: black;
     border-radius: 50%;
     padding: 2px 6px;
     font-size: 0.8rem;
-    /* Ajusta el tamaño del número */
+ 
     font-weight: bold;
     cursor:pointer
 }
@@ -124,20 +124,18 @@
 @keyframes slideInFromRight {
   0% {
     transform: translateX(100%);
-    /* Comienza desde fuera del viewport (derecha) */
+
     opacity: 0;
-    /* Opcional: hacer que sea transparente al inicio */
   }
 
   100% {
     transform: translateX(0);
-    /* Se ubica en su posición final */
+
     opacity: 1;
-    /* Opcional: hacer que sea opaco al final */
+
   }
 }
 
-/* Animación para salir hacia la derecha */
 @keyframes slideOutToRight {
   0% {
     transform: translateX(0);
@@ -169,9 +167,9 @@
   color: #333;
   z-index: 10;
   align-self: center;
-  /* Añadimos la animación */
+
   animation: slideInFromRight 0.6s ease-out;
-  /* Duración de la animación: 0.5s, movimiento suave */
+
 }
 .carritoList li{
   
@@ -192,15 +190,15 @@
 .carritoCount {
   position: absolute;
     top: -5px;
-    /* Ajusta la posición vertical */
+
     right: -5px;
-    /* Ajusta la posición horizontal */
+    
     background-color: beige;
     color: black;
     border-radius: 50%;
     padding: 2px 6px;
     font-size: 0.8rem;
-    /* Ajusta el tamaño del número */
+
     font-weight: bold;
 
 }
@@ -218,10 +216,9 @@
     height: 40px;
     padding: 10px;
     background-color: #95a9bb;
-    /* Color gris claro */
+
     border: none;
     border-radius: 8px;
-    /* Bordes redondeados */
     box-shadow: none;
     transition: box-shadow 0.3s ease;
 }
